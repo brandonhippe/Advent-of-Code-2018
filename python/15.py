@@ -101,7 +101,7 @@ class Unit:
         return self.pos[1] < other.pos[1] or (self.pos[1] == other.pos[1] and self.pos[0] < other.pos[0])
 
 
-class Path:
+class SolvePath:
     def __init__(self, path):
         self.path = path[:]
         self.pos = self.path[-1]
@@ -123,7 +123,7 @@ def manhatDist(p1, p2):
 
 def findNearest(unit, allies, enemies, walls):
     visited = []
-    inQueue = [Path([unit.pos])]
+    inQueue = [SolvePath([unit.pos])]
 
     while len(inQueue) != 0:
         currPath = inQueue.pop(0)
@@ -135,7 +135,7 @@ def findNearest(unit, allies, enemies, walls):
             if n in visited or n in walls or n in [q.pos for q in inQueue] or n in [a.pos for a in allies]:
                 continue
 
-            inQueue.append(Path(currPath.path + [n]))
+            inQueue.append(SolvePath(currPath.path + [n]))
 
         visited.append(currPath.pos)
 
