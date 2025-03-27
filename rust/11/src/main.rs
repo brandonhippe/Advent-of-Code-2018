@@ -1,4 +1,3 @@
-use cached::proc_macro::cached;
 use relative_path::RelativePath;
 use std::env;
 use std::fs;
@@ -6,23 +5,38 @@ use std::time::Instant;
 
 fn part1(contents: String) -> String {
     let serial: i64 = contents.trim().parse().unwrap();
+    let power_levels: Vec<Vec<i64>> = Vec::from_iter(
+        (1..=300).map(|y| {
+            Vec::from_iter(
+                (1..=300).map(|x| {
+                    let rack_id = x + 10;
+                    let mut power = rack_id * y;
+                    power += serial;
+                    power *= rack_id;
+                    power = (power / 100) % 10;
+                    power -= 5;
+                    power
+                })
+            )
+        })
+    );
 
     let mut max_power = 0;
     let mut max_x = 0;
     let mut max_y = 0;
-    for y in 1..=298 {
-        for x in 1..=298 {
+    for y in 0..298 {
+        for x in 0..298 {
             let mut total_power = 0;
             for i in 0..3 {
                 for j in 0..3 {
-                    total_power += power_level(x + i, y + j, serial);
+                    total_power += power_levels[y + j][x + i];
                 }
             }
 
             if total_power > max_power {
                 max_power = total_power;
-                max_x = x;
-                max_y = y;
+                max_x = x + 1;
+                max_y = y + 1;
             }
         }
     }
@@ -34,6 +48,21 @@ fn part2(contents: String) -> String {
     let serial: i64 = contents.trim().parse().unwrap();
     let check_back: i64 = 1;
 
+    let power_levels: Vec<Vec<i64>> = Vec::from_iter(
+        (1..=300).map(|y| {
+            Vec::from_iter(
+                (1..=300).map(|x| {
+                    let rack_id = x + 10;
+                    let mut power = rack_id * y;
+                    power += serial;
+                    power *= rack_id;
+                    power = (power / 100) % 10;
+                    power -= 5;
+                    power
+                })
+            )
+        })
+    );
 
     let mut max_power = 0;
     let mut max_x = 0;
@@ -42,19 +71,19 @@ fn part2(contents: String) -> String {
     let mut increased: Vec<bool> = vec![];
 
     for size in 3..=300 {
-        for y in 1..=(300 - size) {
-            for x in 1..=(300 - size) {
+        for y in 0..(300 - size) {
+            for x in 0..(300 - size) {
                 let mut total_power = 0;
                 for i in 0..size {
                     for j in 0..size {
-                        total_power += power_level(x + i, y + j, serial);
+                        total_power += power_levels[y + j][x + i];
                     }
                 }
 
                 if total_power > max_power {
                     max_power = total_power;
-                    max_x = x;
-                    max_y = y;
+                    max_x = x + 1;
+                    max_y = y + 1;
                     max_size = size;
                     increased.push(true);
                 }
@@ -74,17 +103,6 @@ fn part2(contents: String) -> String {
     }
 
     return format!("{},{},{}", max_x, max_y, max_size);
-}
-
-#[cached]
-fn power_level(x: i64, y: i64, serial: i64) -> i64 {
-    let rack_id = x + 10;
-    let mut power = rack_id * y;
-    power += serial;
-    power *= rack_id;
-    power = (power / 100) % 10;
-    power -= 5;
-    return power;
 }
 
 #[cfg(test)]
