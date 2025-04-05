@@ -15,7 +15,7 @@ def part1(data):
     7
     """
 
-    nanobots = [tuple([int(x) for x in re.findall('-?\d+', line)]) for line in data]
+    nanobots = [tuple([int(x) for x in re.findall(r'-?\d+', line)]) for line in data]
 
     largestRadius = nanobots[[n[-1] for n in nanobots].index(max([n[-1] for n in nanobots]))]
     inRadius = [n for n in nanobots if manhatDist(largestRadius[:-1], n[:-1]) <= largestRadius[-1]]
@@ -30,7 +30,7 @@ def part2(data):
     36
     """
 
-    nanobots = [tuple([int(x) for x in re.findall('-?\d+', line)]) for line in data]
+    nanobots = [tuple([int(x) for x in re.findall(r'-?\d+', line)]) for line in data]
 
     return bestLoc(nanobots)
 

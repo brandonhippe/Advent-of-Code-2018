@@ -16,7 +16,7 @@ def part1(data):
     """
 
     tree = Node()
-    tree.parse([int(x) for x in re.findall('\d+', data[0])])
+    tree.parse([int(x) for x in re.findall(r'\d+', data[0])])
     return tree.metadataSum()
 
 
@@ -28,7 +28,7 @@ def part2(data):
     """
 
     tree = Node()
-    tree.parse([int(x) for x in re.findall('\d+', data[0])])
+    tree.parse([int(x) for x in re.findall(r'\d+', data[0])])
     return tree.evaluate()
 
 

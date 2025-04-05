@@ -16,8 +16,8 @@ def part1(data):
     114
     """
 
-    depth = [int(x) for x in re.findall('\d+', data[0])][0]
-    target = tuple(int(x) for x in re.findall('\d+', data[1]))
+    depth = [int(x) for x in re.findall(r'\d+', data[0])][0]
+    target = tuple(int(x) for x in re.findall(r'\d+', data[1]))
 
     erosionLevels = {(0, 0): depth}
 
@@ -34,8 +34,8 @@ def part2(data):
     45
     """
 
-    depth = [int(x) for x in re.findall('\d+', data[0])][0]
-    target = tuple(int(x) for x in re.findall('\d+', data[1]))
+    depth = [int(x) for x in re.findall(r'\d+', data[0])][0]
+    target = tuple(int(x) for x in re.findall(r'\d+', data[1]))
 
     erosionLevels = {(0, 0): depth}
 

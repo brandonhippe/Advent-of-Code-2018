@@ -17,11 +17,11 @@ def part1(data):
 
     clay = set()
     for line in data:
-        xText = re.findall('x=\d+\.*\d*', line)[0][2:]
-        yText = re.findall('y=\d+\.*\d*', line)[0][2:]
+        xText = re.findall(r'x=\d+\.*\d*', line)[0][2:]
+        yText = re.findall(r'y=\d+\.*\d*', line)[0][2:]
         
-        x = [int(n) for n in re.split('\.\.', xText)]
-        y = [int(n) for n in re.split('\.\.', yText)]
+        x = [int(n) for n in re.split(r'\.\.', xText)]
+        y = [int(n) for n in re.split(r'\.\.', yText)]
 
         if len(x) == 1:
             for i in range(y[0], y[1] + 1):
@@ -43,11 +43,11 @@ def part2(data):
 
     clay = set()
     for line in data:
-        xText = re.findall('x=\d+\.*\d*', line)[0][2:]
-        yText = re.findall('y=\d+\.*\d*', line)[0][2:]
+        xText = re.findall(r'x=\d+\.*\d*', line)[0][2:]
+        yText = re.findall(r'y=\d+\.*\d*', line)[0][2:]
         
-        x = [int(n) for n in re.split('\.\.', xText)]
-        y = [int(n) for n in re.split('\.\.', yText)]
+        x = [int(n) for n in re.split(r'\.\.', xText)]
+        y = [int(n) for n in re.split(r'\.\.', yText)]
 
         if len(x) == 1:
             for i in range(y[0], y[1] + 1):

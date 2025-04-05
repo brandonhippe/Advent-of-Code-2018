@@ -21,7 +21,7 @@ def part1(data):
     8
     """
 
-    points = [tuple(int(x) for x in re.findall('-?\d+', line)) for line in data]
+    points = [tuple(int(x) for x in re.findall(r'-?\d+', line)) for line in data]
 
     neighbors = {p: [p1 for p1 in points if p != p1 and manhatDist(p, p1) <= 3] for p in points}
     return len(scc(points, neighbors))

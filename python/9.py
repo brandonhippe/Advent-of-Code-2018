@@ -32,14 +32,14 @@ def part1(data):
     37305
     """
 
-    return marbleGame(*[int(x) for x in re.findall('\d+', data[0])])
+    return marbleGame(*[int(x) for x in re.findall(r'\d+', data[0])])
 
 
 def part2(data):
     """ 2018 Day 9 Part 2
     """
 
-    players, marbles = [int(x) for x in re.findall('\d+', data[0])]
+    players, marbles = [int(x) for x in re.findall(r'\d+', data[0])]
     return marbleGame(players, marbles * 100)
 
 

@@ -28,7 +28,7 @@ def part2(data):
 
 class Point:
     def __init__(self, infoLine):
-        data = [int(x) for x in re.findall('[- ]?\d+', infoLine)]
+        data = [int(x) for x in re.findall(r'[- ]?\d+', infoLine)]
         self.pos = data[:len(data)//2]
         self.vel = data[len(data)//2:]
 

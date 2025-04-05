@@ -25,7 +25,7 @@ def part1(data):
     asleepTime = 0
     for e in events:
         if 'shift' in e.eventStr:
-            currGuard = int(re.findall('\d+', e.eventStr)[0])
+            currGuard = int(re.findall(r'\d+', e.eventStr)[0])
         elif 'falls asleep' == e.eventStr:
             asleepTime = e.time.minute
         elif 'wakes up' == e.eventStr:
@@ -61,7 +61,7 @@ def part2(data):
     asleepTime = 0
     for e in events:
         if 'shift' in e.eventStr:
-            currGuard = int(re.findall('\d+', e.eventStr)[0])
+            currGuard = int(re.findall(r'\d+', e.eventStr)[0])
         elif 'falls asleep' == e.eventStr:
             asleepTime = e.time.minute
         elif 'wakes up' == e.eventStr:

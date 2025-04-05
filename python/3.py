@@ -18,7 +18,7 @@ def part1(data):
     claims = []
     for line in data:
         # Creates format [minX, minY, maxX, maxY]
-        claims.append([int(x) for x in re.findall('\d+', line)[1:]])
+        claims.append([int(x) for x in re.findall(r'\d+', line)[1:]])
         for i in range(2):
             claims[-1][i + 2] += claims[-1][i] - 1
 
@@ -35,7 +35,7 @@ def part2(data):
     claims = []
     for line in data:
         # Creates format [minX, minY, maxX, maxY]
-        claims.append([int(x) for x in re.findall('\d+', line)[1:]])
+        claims.append([int(x) for x in re.findall(r'\d+', line)[1:]])
         for i in range(2):
             claims[-1][i + 2] += claims[-1][i] - 1
 

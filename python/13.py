@@ -6,7 +6,7 @@ from typing import Any, List, Optional, Tuple
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from Modules.timer import Timer
 def part1(data):
-    """ 2018 Day 13 Part 1
+    r""" 2018 Day 13 Part 1
 
     >>> part1(['/->-\        ', '|   |  /----\ ', '| /-+--+-\  |', '| | |  | v  |', '\-+-/  \-+--/', '  \------/   '])
     '7,3'
@@ -20,7 +20,7 @@ def part1(data):
             if l in '<>^v':
                 carts.append(Cart(complex(x, y), l))
                 tracks[complex(x, y)] = '-' if l in '<>' else '|'
-            elif l in '/\+':
+            elif l in r'/\+':
                 POIs[complex(x, y)] = POI(complex(x, y), l)
             elif l in '-|':
                 tracks[complex(x, y)] = l
@@ -63,7 +63,7 @@ def part2(data):
             if l in '<>^v':
                 carts.append(Cart(complex(x, y), l))
                 tracks[complex(x, y)] = '-' if l in '<>' else '|'
-            elif l in '/\+':
+            elif l in r'/\+':
                 POIs[complex(x, y)] = POI(complex(x, y), l)
             elif l in '-|':
                 tracks[complex(x, y)] = l

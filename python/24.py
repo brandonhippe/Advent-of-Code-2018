@@ -79,14 +79,14 @@ def part2(data):
 class Group:
     def __init__(self, army, groupText):
         self.army = army
-        self.units, self.hp, self.damage, self.initiative = (int(x) for x in re.findall('\d+', groupText))
+        self.units, self.hp, self.damage, self.initiative = (int(x) for x in re.findall(r'\d+', groupText))
         self.damageType = groupText.split(f'{self.damage} ')[-1].split(' damage')[0]
 
         self.weak = []
         self.immune = []
 
         if '(' in groupText:
-            specials = re.split(' to |; ', re.findall('\(.*\)', groupText)[0][1:-1])
+            specials = re.split(' to |; ', re.findall(r'\(.*\)', groupText)[0][1:-1])
             for i, s in enumerate(specials):
                 if s not in ['weak', 'immune']:
                     if specials[i - 1] == 'weak':

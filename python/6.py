@@ -15,7 +15,7 @@ def part1(data):
     17
     """
 
-    points = [[int(x) for x in re.findall('\d+', line.strip('\n'))] for line in data]
+    points = [[int(x) for x in re.findall(r'\d+', line.strip('\n'))] for line in data]
 
     hull = convexHull(points)
     regions = {','.join([str(c) for c in point]): [] for point in points if point not in hull}
@@ -46,7 +46,7 @@ def part2(data, totDist = 10000):
     16
     """
 
-    points = [[int(x) for x in re.findall('\d+', line.strip('\n'))] for line in data]
+    points = [[int(x) for x in re.findall(r'\d+', line.strip('\n'))] for line in data]
 
     hull = convexHull(points)
     

@@ -19,7 +19,7 @@ def part1(data):
     i = 0
     while len(data[i]) > 0:
         before, op, after, _ = data[i:i + 4]
-        observations.append(Observation([int(n) for n in re.findall('\d+', before)], [int(n) for n in re.findall('\d+', op)], [int(n) for n in re.findall('\d+', after)]))
+        observations.append(Observation([int(n) for n in re.findall(r'\d+', before)], [int(n) for n in re.findall(r'\d+', op)], [int(n) for n in re.findall(r'\d+', after)]))
         i += 4
 
     opCodes = {o: OPERATIONS[:] for o in set(ob.op[0] for ob in observations)}
@@ -42,10 +42,10 @@ def part2(data):
     i = 0
     while len(data[i]) > 0:
         before, op, after, _ = data[i:i + 4]
-        observations.append(Observation([int(n) for n in re.findall('\d+', before)], [int(n) for n in re.findall('\d+', op)], [int(n) for n in re.findall('\d+', after)]))
+        observations.append(Observation([int(n) for n in re.findall(r'\d+', before)], [int(n) for n in re.findall(r'\d+', op)], [int(n) for n in re.findall(r'\d+', after)]))
         i += 4
 
-    program = [[int(n) for n in re.findall('\d+', line)] for line in data[i + 2:]]
+    program = [[int(n) for n in re.findall(r'\d+', line)] for line in data[i + 2:]]
 
     opCodes = {o: OPERATIONS[:] for o in set(ob.op[0] for ob in observations)}
 

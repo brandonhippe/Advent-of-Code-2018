@@ -60,7 +60,7 @@ class Direction:
         if len(self.directionText) == 0:
             return
 
-        parens = re.search('\(', self.directionText)
+        parens = re.search(r'\(', self.directionText)
 
         if parens is None:
             for d in self.directionText:
